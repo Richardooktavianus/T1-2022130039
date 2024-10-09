@@ -1,0 +1,23 @@
+{
+    "resources/css/app.css": {
+      "file": "assets/app.css",
+      "src": "resources/css/app.css",
+      "isEntry": true
+    },
+    "resources/fonts/ProtestGuerrilla-Regular.ttf": {
+      "file": "assets/ProtestGuerrilla-Regular.ttf",
+      "src": "resources/fonts/ProtestGuerrilla-Regular.ttf"
+    },
+    "resources/js/app.js": {
+      "file": "assets/app.js",
+      "name": "app",
+      "src": "resources/js/app.js",
+      "isEntry": true
+    },
+    "resources/sass/app.scss": {
+      "file": "assets/app.css",
+      "src": "resources/sass/app.scss",
+      "isEntry": true
+    }
+  }
+
