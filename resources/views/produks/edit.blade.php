@@ -49,15 +49,16 @@
             @enderror
         </div>
 
-        <div class="form-group">
-            <label>Image:</label>
-            <input type="file" name="image" class="form-control @error('image') is-invalid @enderror">
-            @error('image')
-                <div class="invalid-feedback">{{ $message }}</div>
+        <div class="col-6 mt-2 mb-2">
+            <label class="form-label" for="photo">Photo</label>
+            <input class="form-control @error('photo') is-invalid @enderror" type="file" name="photo" id="photo" accept="image/*">
+            <img src="{{ Storage::url($product->photo) }}" alt="" width="100">
+            @error('photo')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
             @enderror
-            <img src="{{ asset('storage/' . $product->image) }}" alt="Gambar Produk" class="img-thumbnail mt-2" width="200">
         </div>
-
         <button type="submit" class="btn btn-primary">Update</button>
     </form>
 @endsection

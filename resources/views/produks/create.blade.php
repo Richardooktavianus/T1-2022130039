@@ -57,11 +57,13 @@
         @enderror
     </div>
 
-    <div class="form-group">
-        <label>Image:</label>
-        <input type="file" name="image" class="form-control @error('image') is-invalid @enderror">
-        @error('image')
-            <div class="invalid-feedback">{{ $message }}</div>
+    <div class="col-6 mt-2 mb-2">
+        <label class="form-label" for="photo">Photo</label>
+        <input class="form-control @error('photo') is-invalid @enderror" type="file" name="photo" id="photo">
+        @error('photo')
+            <span class="invalid-feedback" role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
         @enderror
     </div>
 
