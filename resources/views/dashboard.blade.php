@@ -17,7 +17,7 @@
                 <div class="card-header bg-primary text-white">Total Produk</div>
                 <div class="card-body">
                     <h5 class="card-title">{{ $totalQuantity }}</h5>
-                    <p class="card-text">Jumlah total produk yang disimpan.</p>
+                    <p class="card-text">Jumlah total produk yang disimpan</p>
                 </div>
             </div>
         </div>
