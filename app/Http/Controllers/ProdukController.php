@@ -13,8 +13,8 @@ class ProdukController extends Controller
      */
     public function index()
     {
-        //$products = Produk::all();
         $products = Produk::paginate(10);
+
         return view('produks.index', compact('products'));
     }
 
@@ -23,7 +23,6 @@ class ProdukController extends Controller
      */
     public function create()
     {
-
         return view('produks.create');
     }
 
@@ -40,12 +39,14 @@ class ProdukController extends Controller
             'wholesale_price' => 'required|numeric',
             'origin' => 'required|max:2',
             'quantity' => 'required|numeric',
-            'product_image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'photo' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
-        if ($request->file('product_image')) {
-            $path = $request->file('product_image')->store('product-images');
-            $validatedData['product_image'] = Storage::url($path);
+        if ($request->hasFile('photo')) {
+            $file = $request->file('photo');
+            $fileName = $file->hashName();
+            $filePatch = $file->storeAs('public', $fileName);
+            $validatedData['photo'] = $filePatch;
         }
 
         Produk::create($validatedData);
@@ -85,12 +86,14 @@ class ProdukController extends Controller
             'wholesale_price' => 'required|numeric',
             'origin' => 'required|max:2',
             'quantity' => 'required|numeric',
-            'product_image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'photo' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
-        if ($request->file('product_image')) {
-            $path = $request->file('product_image')->store('product-images');
-            $validatedData['product_image'] = Storage::url($path);
+        if ($request->hasFile('photo')) {
+            $file = $request->file('photo');
+            $fileName = $file->hashName();
+            $filePatch = $file->storeAs('public', $fileName);
+            $validatedData['photo'] = $filePatch;
         }
 
         $product = Produk::findOrFail($id);
@@ -105,8 +108,8 @@ class ProdukController extends Controller
     public function destroy(string $id)
     {
         $product = Produk::findOrFail($id);
-        if ($product->product_image) {
-            Storage::delete($product->product_image);
+        if ($product->photo) {
+            Storage::delete($product->photo);
         }
         $product->delete();
 

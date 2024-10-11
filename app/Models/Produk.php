@@ -18,20 +18,7 @@ class Produk extends Model
         'wholesale_price',
         'origin',
         'quantity',
-        'product_image',
+        'photo',
     ];
-
-    protected $appends = [
-        'avatar_url',
-    ];
-
-    public function getAvatarUrlAttribute()
-    {
-        if (filter_var($this->product_image, FILTER_VALIDATE_URL)) {
-            return $this->product_image;
-        }
-
-        return $this->product_image ? Storage::url($this->product_image) : null;
-    }
 }
 

@@ -30,8 +30,12 @@
                         <td>{{ number_format($product->wholesale_price, 0, ',', '.') }}</td>
                         <td>{{ $product->origin }}</td>
                         <td>{{ $product->quantity }}</td>
-                        <td>
-                            <img src="{{ asset('storage/' . $product->product_image) }}" alt="Gambar Produk" class="img-thumbnail" width="100">
+                        <td class="text-center">
+                            @if($product->photo)
+                                <img src="{{ asset('storage/' . $product->photo) }}" class="img-thumbnail w-25">
+                            @else
+                                <img src="https://placehold.co/50x50" class="img-thumbnail w-25">
+                            @endif
                         </td>
                         <td>
                             <a href="{{ route('produks.show', $product->id) }}" class="btn btn-info btn-sm">Lihat</a>
@@ -56,3 +60,4 @@
         </div>
     </div>
 @endsection
+
